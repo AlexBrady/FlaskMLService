@@ -34,10 +34,15 @@ class Team(db.Model):
 class MidPred(db.Model):
     __tablename__ = 'preds'
     player_id = db.Column(db.Integer, primary_key=True)
+    round = db.Column(db.Float, primary_key=True)
     name = db.Column(db.String(80))
     predicted = db.Column(db.Float)
     total_points = db.Column(db.Float)
     prediction_error = db.Column(db.Float)
+    # __table_args__ = (
+    #     PrimaryKeyConstraint('player_id', 'round'),
+    #     {},
+    # )
 
     def __init__(self, name, predicted):
         self.name = name

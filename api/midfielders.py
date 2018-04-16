@@ -124,7 +124,7 @@ def get_player(id: int):
 
 @app.route("/preds/<id>", methods=['GET'])
 def get_players(id: int):
-    pred = MidPred.query.filter_by(player_id=id).first()
+    pred = MidPred.query.filter_by(player_id=id, round=35)
 
     return mid_schema.jsonify(pred)
 
@@ -132,9 +132,14 @@ def get_players(id: int):
 @app.route("/all_preds/<id>", methods=['GET'])
 def get_mid(id: int):
     pred = MidPred.query.get(id)
+
     return mid_schema.jsonify(pred)
 
-
+@app.route('/past_preds/<id>', methods=['GET'])
+def get_past_preds(id: int):
+    preds = MidPred.query.filter_by(player_id=id).all()
+    
+    return mid_schema.jsonify(preds, many=True)
 
 # @app.route("/defender/<name>", methods=['GET'])
 # def get_def(name: str):

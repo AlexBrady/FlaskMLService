@@ -17,7 +17,7 @@ class TeamSchema(ma.ModelSchema):
     class Meta:
         model = Team
 
-mid_schema = MidPredSchema(strict=True)
+mid_schema = MidPredSchema()
 player_schema = PlayerSchema()
 user_schema = UserSchema()
 team_schema = TeamSchema(many=True)
