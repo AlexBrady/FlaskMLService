@@ -124,7 +124,7 @@ def get_player(id: int):
 
 @app.route("/preds/<id>", methods=['GET'])
 def get_players(id: int):
-    pred = MidPred.query.filter_by(player_id=id, round=35)
+    pred = MidPred.query.filter_by(player_id=id).first()
 
     return mid_schema.jsonify(pred)
 
